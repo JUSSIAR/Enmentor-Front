@@ -1,4 +1,11 @@
 import React from 'react'
+import {
+  ToNodeType,
+  NodeType,
+  StatProps,
+  StatWithDateProps,
+  TryFindStringType,
+} from './helper-types'
 
 const DEFAULT_INFO: string = 'no_info'
 
@@ -7,20 +14,9 @@ class TROUBLE {
   static node: string = "INVALID NODE"
 }
 
-type ToNodeType = {
-  letter?: string
-  can: boolean
-  node?: number
-}
-
 const generateDefault = (): ToNodeType[] => {
   const result: ToNodeType[] = new Array<ToNodeType>()
   return result
-}
-
-interface NodeType {
-  nextDown: ToNodeType[]
-  terminal: number
 }
 
 class Node implements NodeType {
@@ -66,14 +62,6 @@ abstract class StringDataStucture {
   abstract startWithString(newString: string): string[];
 }
 
-type StatProps = {
-  info?: string
-}
-
-type StatWithDateProps = StatProps & {
-  date: Date
-}
-
 class StatWithDate {
   static totalCount: number = 0
   static dateArray: Date[] = []
@@ -112,13 +100,8 @@ class StatWithDate {
   }
 }
 
-type TryFindStringType = {
-  have: boolean
-  node?: number
-}
-
 // multiset version
-export class SmartStringSet extends StringDataStucture {
+export default class SmartStringSet extends StringDataStucture {
   private stat: StatWithDate
   private root: number
   private nodeArray: Node[]

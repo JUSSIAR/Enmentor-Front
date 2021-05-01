@@ -3,7 +3,11 @@ import './App.css';
 
 const App: React.FC = () => {
   return (
-    <div> Hello world </div>
+    <div>
+      <header> Header </header>
+      <main> Main </main>
+      <footer> Footer </footer>
+    </div>
   );
 }
 
